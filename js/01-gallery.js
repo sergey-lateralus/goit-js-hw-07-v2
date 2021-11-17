@@ -5,8 +5,9 @@ const gallery = document.querySelector('.gallery');
 
 const galleryMarkup = createMarkup(galleryItems);
 
-gallery.insertAdjacentHTML('beforebegin', galleryMarkup);
+gallery.insertAdjacentHTML('afterbegin', galleryMarkup);
 
+gallery.addEventListener('click', onGalleryClick)
 
 function createMarkup(array) {
     return array.map(({ preview, original, description }) => {
@@ -23,4 +24,12 @@ function createMarkup(array) {
     }).join('');
 };
 
-
+function onGalleryClick(event) {
+    if(!event.target.classList.contains(`gallery__image`)) {
+        return;
+    }
+    
+    event.preventDefault();
+    
+    basicLightbox.create(`<img src="${event.target.dataset.source}">`).show();
+};
