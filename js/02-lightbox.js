@@ -15,4 +15,4 @@ function createMarkup(array) {
     }).join('');
 };
 
-const lightbox = new SimpleLightbox('.gallery a', { /* options */ });
+const lightbox = new SimpleLightbox('.gallery a', { captionType: 'attr', captionsData: 'alt', captionDelay: 250 });
